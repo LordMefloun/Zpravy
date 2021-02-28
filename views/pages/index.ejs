@@ -1,0 +1,69 @@
+<%- include('../include/header'); -%>
+<%- include('../include/navbar'); -%>
+
+
+<% 
+
+    var lastId;
+    clanky.forEach(function(clanek) { 
+        lastId = clanek.id;
+    }); %>
+
+
+    <% clanky.forEach(function(clanek) { 
+        
+        if (clanek.id == (lastId - 3) || clanek.id == (lastId - 2)|| clanek.id == (lastId - 1)){ %>
+        <a href="/clanky?clanek=<%- clanek.id %>" style="text-decoration: none; color: #292b2c"><div id="clanek">
+            <img id="obrazek" src="/imgs/<%= clanek.obrazek %>" alt="" width="70px" height="70px">
+            <p id="titulek"><%= clanek.titulek %></p>
+            <br>
+        </div></a>
+    <% }}); %>
+    <hr>
+
+
+    <div id="sideclanky" class="container">
+    <h1>Stalo se</h1>
+    <hr>
+        <% clanky.forEach(function(clanek) { 
+            if (clanek.id == (lastId - 4) || clanek.id == (lastId - 5)|| clanek.id == (lastId - 6)){ %>
+            <a href="/clanky?clanek=<%- clanek.id %>" style="text-decoration: none; color: #292b2c"><div id="sideclanek">
+                <p id="sidetitulek"><%= clanek.titulek %></p>
+                <img id="sideobrazek" src="/imgs/<%= clanek.obrazek %>" alt="" width="70px" height="70px">
+                <hr>
+            </div></a>
+        <% }}); %>
+        <div class="container"><button class="btn btn-danger btn-lg" onclick="window.location.href='/clanky'">Další články</button></div>
+    </div>
+
+<br>
+<% clanky.forEach(function(clanek) { 
+        
+        if (clanek.id == lastId){ %>
+        <div style="width:50%;">
+        <a href="/clanky?clanek=<%- clanek.id %>" style="text-decoration: none; color: #292b2c"><h1 style="width:100%;"><%= clanek.titulek %></h1></a>
+            <img src="/imgs/<%= clanek.obrazek %>" alt="" width="100%">
+            <br>
+            <br>
+            <div id="mainobsah"><%- getObsah(clanek.obsah).replace(/undefined/g, "");%>... <a href="/clanky?clanek=<%- clanek.id %>" style="text-decoration: none; color: red">číst dále</a> </div>
+        </div>
+    <% }}); %>
+
+
+
+
+
+
+
+
+
+
+<% function getObsah(obsah){
+    var a;
+    for (let index = 0; index < 200; index++) {
+        a += obsah[index];
+        
+    }
+    return a;
+} %>
+<%- include('../include/footer'); -%>

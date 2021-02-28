@@ -1,0 +1,65 @@
+<%- include('../include/header'); -%>
+<%- include('../include/navbar'); -%>
+
+
+
+<%
+    var lastId;
+    clanky.forEach(function(clanek) { 
+        lastId = clanek.id;
+    });
+ if (search == null){%>
+
+    <ul>
+        <div id="ClanekClankys">
+            <% clanky.forEach(function(clanky) { %>
+                <div id="clanekClanky">
+                    <img style="display: inline-block;" src="/imgs/<%- clanky.obrazek%>" width="200px" alt="" srcset="">
+                    <div id="info">
+                        <h1><%- clanky.titulek -%></h1>
+                        <button class="btn btn-danger" id="btn" onclick="window.location.href='/clanky?clanek=<%- clanky.id %>'">Přejít na článek</button>
+                    </div>
+                    <hr>
+                </div>
+            <% }); %>
+        </div>
+    </ul>
+<%}
+else {
+    var id = (search.slice(8))%>
+    <% clanky.forEach(function(clanky) { 
+        if (clanky.id == id){%>
+            <div id="clanekvclancich">
+                <br>
+                <h1><%- clanky.titulek %></h1>
+                <img src="imgs/<%- clanky.obrazek%>" alt="" srcset="">
+                <p><%- clanky.obsah%></p>
+                <br>
+            </div>
+    <%}})%>
+    <div id="sideclanky" class="container">
+    <h1>Stalo se</h1>
+    <hr>
+        <% clanky.forEach(function(clanek) { 
+            if (clanek.id == lastId || clanek.id == (lastId - 1)|| clanek.id == (lastId - 2)){ %>
+            <a href="/clanky?clanek=<%- clanek.id %>" style="text-decoration: none; color: #292b2c"><div id="sideclanek">
+                <p id="sidetitulek"><%= clanek.titulek %></p>
+                <img id="sideobrazek" src="/imgs/<%= clanek.obrazek %>" alt="" width="70px" height="70px">
+                <hr>
+            </div></a>
+        <% }}); %>
+        <div class="container"><button class="btn btn-danger btn-lg" onclick="window.location.href='/clanky'">Další články</button></div>
+    </div>
+
+<%}%>
+
+<%- include('../include/footer'); -%>
+
+<% function getObsah(obsah){
+    var a;
+    for (let index = 0; index < 20; index++) {
+        a += obsah[index];
+        
+    }
+    return a;
+} %>

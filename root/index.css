@@ -1,0 +1,94 @@
+.navbar{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+hr{
+    color: pink;
+}
+.container{
+    width: 25%;
+}
+/* INDEX */
+#clanek{
+    width: 32%;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: top;
+}
+
+
+#obrazek{
+    margin-left: 10px;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: top;
+    object-fit: cover;
+}
+#titulek{
+    font-size: 18px;
+    vertical-align: top;
+    display: inline-block;
+    width: 250px;
+}
+#mainobsah{
+    width: 100%;
+    font-size: 20px;
+}
+
+
+#sideclanky{
+    float: right;
+    width: 30%;
+    margin-right: 10%;
+    
+}
+#sideobrazek{
+    vertical-align: top;
+    display: inline-block;
+    object-fit: cover;
+}
+#sidetitulek{
+    display: inline-block;
+    width: 200px;
+    font-size: 20px;
+}
+
+/* CLANKY */
+#clanekClanky{
+    width: 80%;
+}
+#clanekClanky h1{
+    font-size: 20px;
+    vertical-align: top;
+    width: 400px;
+    margin-left: 10px;
+}
+#btn{
+    vertical-align: top;
+    display: inline-block;
+}
+#info{
+    vertical-align: top;
+    display: inline-block;
+}
+#info button{
+    margin-left: 15px;
+}
+/* Clanek v clancich */
+
+#clanekvclancich{
+    width: 49%;
+    vertical-align: top;
+    float: left;
+    display: inline-block;
+}
+#clanekvclancich p{
+    font-size: large;
+}
+#clanekvclancich img{
+    width: 99%;
+}
+#clanekvclancich br{
+    display: block;
+    margin: 5px 0;
+     
+}
