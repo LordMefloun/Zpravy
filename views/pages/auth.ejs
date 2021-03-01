@@ -1,0 +1,123 @@
+<%- include('../include/header'); -%>
+<%- include('../include/navbar'); -%>
+<%
+    const user = "admin";
+    const password = "admin";
+    if (logged) window.location = "localhost:3000/administration?user=" + user +"&password="+ password;
+
+if(get.user == user && get.password == password){%>
+        
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="./"><strong>Administrace</strong></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="administration?user=<%- user %>&password=<%- password%>&page=odstranit&clanek=null">Odstranit</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="administration?user=<%- user %>&password=<%- password%>&page=novyclanek">Nový článek</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <br>
+      <%if (get.page == "odstranit"){%>
+        <% if (get.clanek == "null"){%>
+            <% clanky.forEach(function(clanek) { %>
+            
+                <div id="clanek">
+                    <img id="obrazek" src="/imgs/<%= clanek.obrazek %>" alt="" width="70px" height="70px">
+                    <p id="titulek"><%= clanek.titulek %> <label style="color:red" for="">id: <%- clanek.id%></label> </p>
+                    <br>
+                </div>
+            <% }); %>
+        <div style="width:25%" class="container"><form method="POST" action="/r3m0vepr1sp3v3k">
+            <hr>
+            <div class="form-group">
+            <label for="exampleInputEmail1">Id přispěvku ktery chceš odstranit</label>
+            <input name="id" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter id">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <hr>
+        </form></div>
+
+        <%}else{%>
+            <p>Prispevek byl odstraněn</p>
+        <%}%>
+      <%}else if (get.page =="novyclanek"){%>
+        <div style="width:25%" class="container"><form method="POST" action="/addprispevek">
+                <hr>
+                <div class="form-group">
+                <label for="exampleInputEmail1">Titulek přispěvku</label>
+                <br>
+                <input name="titulek" type="text" class="form-control" id="text" aria-describedby="emailHelp" placeholder="Enter title">
+                </div>
+                <br>
+                <div class="form-group">
+                <label for="exampleInputEmail1">Obrazek příspěvku</label>
+                <br>
+                <input name="obrazek" type="text" class="form-control" id="text" aria-describedby="emailHelp" placeholder="Enter picture name">
+                </div>
+                <br>
+                <div class="form-group">
+                <label for="exampleInputEmail1">Obsah přispěvku</label>
+                <br>
+                <textarea name="obsah" class="form-control" id="text" placeholder="Enter content" rows="3"></textarea>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <hr>
+            </form></div>
+        <%}%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%}else{%>
+    <p>logging failed!</p>
+    <div class="container" style="width:50%;background:whitesmoke;padding:10px" method="get">
+        <form>
+            <div class="form-group">
+            <label for="exampleInputEmail1">User</label>
+            <input name="user" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+<%}%>
+<%- include('../include/footer'); -%>

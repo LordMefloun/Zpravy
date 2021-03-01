@@ -27,7 +27,7 @@
     <hr>
         <% clanky.forEach(function(clanek) { 
             if (clanek.id == (lastId - 4) || clanek.id == (lastId - 5)|| clanek.id == (lastId - 6)){ %>
-            <a href="/clanky?clanek=<%- clanek.id %>" style="text-decoration: none; color: #292b2c"><div id="sideclanek">
+            <a href="/clanky?clanek=<%- clanek.id %>"  style="text-decoration: none; color: #292b2c"><div id="sideclanek">
                 <p id="sidetitulek"><%= clanek.titulek %></p>
                 <img id="sideobrazek" src="/imgs/<%= clanek.obrazek %>" alt="" width="70px" height="70px">
                 <hr>
